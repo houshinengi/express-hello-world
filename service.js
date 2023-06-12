@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 10000;
 const dataFilePath = "data.json";
 
 // 静态文件中间件，将public文件夹作为静态资源提供
