@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>前端页面</title>
-  <script src="script.js"></script>
+    <title>Button Click Counter</title>
 </head>
 <body>
-  <h1>前端页面</h1>
-  <div id="qiao">
-    <button onclick="incrementNumber()">点击增加数字</button>
-  </div>
-  <span id="gongde"></span>
+    <div id="qiao">Click Me</div>
+    <span id="gongde">0</span>
+
+    <script>
+        const qiao = document.getElementById('qiao');
+        const gongde = document.getElementById('gongde');
+        let count = parseInt(gongde.textContent);
+
+        qiao.addEventListener('click', () => {
+            count++;
+            gongde.textContent = count;
+
+            // 将 count 数据发送给服务器
+            fetch('/updateCount', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ count })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        });
+    </script>
 </body>
 </html>
