@@ -1,10 +1,8 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3030;
 const dataFilePath = "data.json";
-
-app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   const data = getDataFromFile();
