@@ -14,7 +14,7 @@ function updateNumber() {
   fetch("/")
     .then((response) => response.text())
     .then((data) => {
-      document.getElementById("number").textContent = data;
+      document.getElementById("gongde").textContent = data;
     })
     .catch((error) => {
       console.error("获取数字时发生错误：", error);
