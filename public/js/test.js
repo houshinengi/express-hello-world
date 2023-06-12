@@ -1,5 +1,3 @@
-
-
 function incrementNumber() {
   fetch("/increment", { method: "POST" })
     .then(() => {
