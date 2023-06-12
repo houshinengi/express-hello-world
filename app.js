@@ -1,14 +1,13 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const fs = require('fs');
-const path = require('path');
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+app.use(express.static('public'));
 
 app.post('/updateCount', (req, res) => {
     const { count } = req.body;
