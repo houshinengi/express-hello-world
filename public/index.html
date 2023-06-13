@@ -5,10 +5,30 @@
    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="qiao">Click Me</div>
-  <span id="gongde"></span>
+	<!-- 数字计分板等 -->
+	<div class="gongde">
+	<h1>赛博木鱼</h1>
+       <p>累积功德：<span id="number">0</span></p>
+	</div>
+<div id="all" class="all">
 
+    <!-- 木鱼 -->
+	<div id="muyu" class="muyu">
+		<div class="word">
+			<div id="jiayi" class="jiayi">功德+1
+			</div>
+			</div>
+		<div id="qiao" class="qiao" onclick="incrementNumber()">
+			<img src="img/muyu.png">
+		</div>
+		<div class="give">
+	佛祖在上，本人自愿将本赛博木鱼的功德返给楚天遥（网名）希望她得到好运。
+		</div>
+	</div>
+	
+</div>
 
+      <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
