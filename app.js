@@ -7,6 +7,7 @@ const dataFile = 'data.json';
 // 设置静态文件目录
 app.use(express.static('public'));
 
+
 // 设置路由处理更新数字请求
 app.get('/update-number', (req, res) => {
   // 读取当前数字
@@ -50,10 +51,11 @@ app.get('/', (req, res) => {
 
     let number = JSON.parse(data).number;
 
-    // 渲染模板并传递数字
-    res.render('index', { number });
+    // 返回 index.html 文件
+    res.sendFile('index.html', { root: __dirname + '/public' });
   });
 });
+
 
 // 启动服务器
 app.listen(3000, () => {
