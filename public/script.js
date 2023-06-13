@@ -1,16 +1,37 @@
-const qiaoDiv = document.getElementById('qiao');
-const gongdeSpan = document.getElementById('gongde');
+document.addEventListener('DOMContentLoaded', () => {
+  const qiaoDiv = document.getElementById('qiao');
+  const gongdeSpan = document.getElementById('gongde');
 
-// 监听点击事件
-qiaoDiv.addEventListener('click', () => {
-  // 发送请求到后端
-  fetch('/update-number')
-    .then(response => response.json())
-    .then(data => {
-      // 更新数字显示
-      gongdeSpan.textContent = data.number;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+  qiaoDiv.addEventListener('click', () => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/update-number');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          const number = response.number;
+          gongdeSpan.innerText = number;
+        } else {
+          console.error('Error updating number:', xhr.status);
+        }
+      }
+    };
+    xhr.send();
+  });
+
+  // 初始化数字
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '/get-number');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText);
+        const number = response.number;
+        gongdeSpan.innerText = number;
+      } else {
+        console.error('Error getting number:', xhr.status);
+      }
+    }
+  };
+  xhr.send();
 });
