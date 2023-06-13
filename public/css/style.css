@@ -57,7 +57,7 @@ body {
 }
 
 .qiao:active {
-  animation: zoomLarge 0.5s ;
+  animation: zoomLarge 1s ;
 }
 
 .muyu img{
