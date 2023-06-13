@@ -1,28 +1,37 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const fs = require('fs');
-const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const dataFile = 'data.json';
 
-app.use(express.static('public'));
+// 设置路由处理更新数字请求
+app.get('/update-number', (req, res) => {
+  // 读取当前数字
+  fs.readFile(dataFile, (err, data) => {
+    if (err) {
+      console.error('Error reading file:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
 
-app.post('/updateCount', (req, res) => {
-    const { count } = req.body;
+    let number = JSON.parse(data).number;
 
-    // 将 count 写入 JSON 文件
-    fs.writeFile('data.json', JSON.stringify({ count }), err => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ message: 'Error saving count' });
-        } else {
-            res.json({ message: 'Count updated successfully' });
-        }
+    // 增加数字
+    number++;
+
+    // 更新json文件
+    fs.writeFile(dataFile, JSON.stringify({ number }), err => {
+      if (err) {
+        console.error('Error writing file:', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+
+      // 返回更新后的数字
+      res.json({ number });
     });
+  });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// 启动服务器
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
 });
