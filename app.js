@@ -36,6 +36,11 @@ app.get('/update-number', (req, res) => {
 
 // 设置路由处理根目录请求
 app.get('/', (req, res) => {
+  // 检查是否存在 data.json 文件，如果不存在就创建它并写入初始的 JSON 数据
+  if (!fs.existsSync(dataFile)) {
+    fs.writeFileSync(dataFile, JSON.stringify({ number: 0 }));
+  }
+
   // 读取当前数字
   fs.readFile(dataFile, (err, data) => {
     if (err) {
