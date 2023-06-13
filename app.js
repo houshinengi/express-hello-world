@@ -4,6 +4,12 @@ const fs = require('fs');
 
 const dataFile = 'data.json';
 
+// 发送 index.html 文件作为响应
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+
 // 设置路由处理更新数字请求
 app.get('/update-number', (req, res) => {
   // 读取当前数字
