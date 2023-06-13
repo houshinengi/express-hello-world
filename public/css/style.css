@@ -33,7 +33,7 @@ body {
 	justify-content:center;
 }
 
-.gongde {
+.number {
 	margin:auto;
 	font-weight: bold;
 	position:absolute;
@@ -41,7 +41,7 @@ body {
 	text-align:center;	
 }
 
-.gongde p{
+.number p{
 	padding-top:2em;
 }
 
