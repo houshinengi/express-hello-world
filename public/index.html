@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>电子木鱼</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <title>敲电子木鱼</title>
 </head>
-<body>
-  <div id="qiao">Click me</div>
-  <span id="gongde"></span>
+  
+<!-- 数字计分板等 -->
+	<div class="number">
+	<h1>赛博木鱼</h1>
+       <p>累积功德：<span id="gongde">0</span></p>
+	</div>
+<div id="all" class="all">
+
+    <!-- 木鱼 -->
+	<div id="muyu" class="muyu">
+		<div class="word">
+			<div id="jiayi" class="jiayi">功德+1
+			</div>
+			</div>
+		<div class="qiao" onclick="qiao();">
+			<img src="img/muyu.png">
+		</div>
+		<div class="give">
+	佛祖在上，本人自愿将本赛博木鱼的功德返给楚天遥（网名）希望她得到好运。
+		</div>
+	</div>
+	
+</div>
+    <!-- JavaScript libs -->
+    <script src="js/libs/jquery-3.4.1.min.js"></script>
+    <script src="js/libs/jquery.cookie-1.4.1.min.js"></script>
 
   <script src="script.js"></script>
 </body>
