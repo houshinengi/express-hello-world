@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => {
         console.error('Error updating number:', error);
       });
+    
+         var audio = new Audio("audio/muyu.mp3");
+				audio.play();
+				
+				$("#jiayi").show();
+				setTimeout(function() { $("#jiayi").hide(); }, 600);
   }
 
   function getNumber() {
