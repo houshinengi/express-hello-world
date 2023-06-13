@@ -3,6 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const gongdeSpan = document.getElementById('gongde');
 
   function updateNumber() {
+    fetch('/update-number')
+      .then(response => response.json())
+      .then(data => {
+        const number = data.number;
+        gongdeSpan.innerText = number;
+      })
+      .catch(error => {
+        console.error('Error updating number:', error);
+      });
+  }
+
+  function getNumber() {
     fetch('/get-number')
       .then(response => response.json())
       .then(data => {
@@ -15,17 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 初始化数字
-  updateNumber();
+  getNumber();
 
   qiaoDiv.addEventListener('click', () => {
-    fetch('/update-number')
-      .then(response => response.json())
-      .then(data => {
-        const number = data.number;
-        gongdeSpan.innerText = number;
-      })
-      .catch(error => {
-        console.error('Error updating number:', error);
-      });
+    updateNumber();
   });
 });
