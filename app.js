@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const path = require('path'); // 添加这一行
 
 const dataFile = 'data.json';
 
@@ -52,7 +53,7 @@ app.get('/', (req, res) => {
     let number = JSON.parse(data).number;
 
     // 返回 index.html 文件
-    res.sendFile('index.html', { root: __dirname + '/public' });
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 });
 
