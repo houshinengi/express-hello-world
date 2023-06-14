@@ -58,3 +58,18 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log('Server started on port ${PORT}');
 });
+
+// 检查文件的权限
+const fs = require('fs');
+
+const filePath = 'data.json';
+
+fs.access(filePath, fs.constants.F_OK | fs.constants.R_OK | fs.constants.W_OK, (err) => {
+  if (err) {
+    console.error('Error accessing file:', err);
+    return;
+  }
+
+  console.log('File exists and has read and write permissions.');
+});
+
