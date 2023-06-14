@@ -4,7 +4,8 @@ const PORT = process.env.PORT ||3030;
 const fs = require('fs');
 const path = require('path');
 
-const dataFile = 'data.json';
+const dataFile = path.join(__dirname, 'data.json');
+
 
 // 设置静态文件目录
 app.use(express.static('public'));
