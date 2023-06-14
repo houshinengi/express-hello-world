@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT ||3030;
 const fs = require('fs');
 const path = require('path');
 
@@ -54,6 +55,6 @@ app.get('/', (req, res) => {
 });
 
 // 启动服务器
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+app.listen(PORT, () => {
+  console.log('Server started on port ${PORT}');
 });
